@@ -131,8 +131,9 @@ Contoh prediksi:
 - Output: predicted sold_count: 435
 ![arsitektur](Image/contoh-predict.png)
 
-## Output Screenshots
-- _Dashboard UI_
+## Output
+
+### - _Dashboard UI_
 
   ![arsitektur](Image/dashboard.png)
 
@@ -152,7 +153,7 @@ Terdapat tombol Download filtered CSV untuk mengunduh data yang telah difilter.
 
 Navigasi tab tersedia untuk menjelajahi fitur seperti Gallery, Top Sold, Insights, Category Sales, dan Prediction.
 
-- _Gallery Product_
+### - _Gallery Product_
 
 ![arsitektur](Image/d-gallery.png)
 
@@ -166,7 +167,7 @@ Disusun secara grid otomatis menggunakan Streamlit columns() dan CSS hover untuk
 
 Berguna untuk melihat visual produk fashion berdasarkan gender, warna, kategori, dan lainnya.
 
-- _Top Sold Products_
+### - _Top Sold Products_
 
   ![arsitektur](Image/d-top-sales.png)
 
@@ -178,7 +179,7 @@ Disajikan dalam bentuk bar chart dan dataframe untuk mempermudah perbandingan.
 
 Chart menunjukkan visual penjualan, sedangkan tabel memberikan rincian nama produk, jumlah terjual, dan rating.
 
-- _Prediction Feature_
+### - _Prediction Feature_
 
   ![arsitektur](Image/d-prediction.png)
 
@@ -198,12 +199,14 @@ Nilai akurasi model (R²) dan Mean Absolute Error (MAE).
 
 Berguna untuk mengestimasi performa produk ke depannya.
 
-- _MinIO Dashboard_
+### - _MinIO Dashboard_
 
  ![arsitektur](Image/minio.png)
 
 ## Catatan
 
-- Dashboard menggunakan model LinearRegression untuk prediksi.
-- Data disimpan sebagai file .parquet di MinIO.
-- Jika ingin mengubah model, edit kode pada tab "Prediction" di streamlit_app/app.py.
+- Model prediksi menggunakan LinearRegression/RandomForest sederhana.
+
+- Semua file parquet dan model tersimpan di MinIO.
+
+- Jika ingin memperbarui model, ubah predictor.py dan fungsi train_model().
