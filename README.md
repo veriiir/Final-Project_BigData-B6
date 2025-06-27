@@ -33,7 +33,7 @@ Sistem ini mengikuti arsitektur real-time lakehouse yang terdiri dari:
 - Model prediksi sederhana menggunakan Linear Regression
 - Data tersimpan dalam format Parquet di bucket `fashion-lakehouse` MinIO
 
-FOTO ARSITEKTUR DISINI YA GUS
+[FOTO ARSITEKTUR](https://github.com/veriiir/Final-Project_BigData-B6/blob/main/Image/tab.png?raw=true)
 
 ## How to run?
 
