@@ -49,6 +49,30 @@ Sistem ini mengikuti arsitektur real-time lakehouse yang terdiri dari:
 
 ![image](https://github.com/user-attachments/assets/096cc3c9-18d8-4549-bad9-137a17db87f4)
 
+## Komponen
+
+| Komponen     | Deskripsi |
+|--------------|-----------|
+| **Apache Kafka** | Digunakan untuk mengalirkan data penjualan produk fashion secara real-time dari file CSV ke pipeline pemrosesan. |
+| **MinIO** | Berfungsi sebagai object storage (Data Lake) untuk menyimpan data dalam format *.parquet*, serta menyimpan model jika diperlukan. |
+| **Python** | Bahasa utama yang digunakan untuk membangun Kafka Producer, Kafka Consumer, pemrosesan data, serta pelatihan dan prediksi model. |
+| **Streamlit** | Membangun dashboard interaktif untuk menampilkan galeri produk, analitik penjualan, serta fitur prediksi penjualan ke depan. |
+| **Docker & Docker Compose** | Mengorkestrasi dan menjalankan seluruh layanan proyek secara terisolasi dan otomatis. |
+| **Scikit-Learn** | Digunakan untuk pelatihan model Linear Regression yang memprediksi sold_count berdasarkan rating dan data historis. |
+| **Altair & Pandas** | Digunakan untuk visualisasi data (grafik batang, donut chart, heatmap) dan manipulasi data tabular. |
+| **S3FS** | Library untuk mengakses MinIO (compatible dengan S3 API) langsung dari Python dan Streamlit. |
+
+### Tech Stack
+
+| Kategori              | Teknologi                                      |
+|-----------------------|------------------------------------------------|
+| **Containerization**  | Docker, Docker Compose                         |
+| **Data Streaming**    | Apache Kafka                                   |
+| **Data Lake Storage** | MinIO                                          |
+| **Backend & ML**      | Python                                         |
+| **Library Python**    | Kafka-Python, MinIO                            |
+| **Dashboard**         | Streamlit                                      |
+
 ## Langkah Menjalankan Proyek dalam 1 Command
 
 ### Quick start
