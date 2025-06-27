@@ -49,12 +49,16 @@ Sistem ini mengikuti arsitektur real-time lakehouse yang terdiri dari:
 
 ![image](https://github.com/user-attachments/assets/096cc3c9-18d8-4549-bad9-137a17db87f4)
 
-## How to run?
+## Langkah Menjalankan Proyek
 
 ### Quick start
 
 ```bash
-bash start.sh
+bash start.sh atau ./start.sh
+```
+apabila permission denied, coba lakukan:
+```bash
+chmod +x start.sh
 ```
 
 Script ini akan:
@@ -64,24 +68,41 @@ Script ini akan:
 - Menjalankan producer dan processor
 - Membuka dashboard di [http://localhost:8501](http://localhost:8501)
 
-### Manual Steps
+### Langkah Menjalankan Proyek secara Manual
 
 1. _Start Docker Compose_
-
+   
+Build dan jalankan seluruh layanan:
 ```bash
 docker-compose up -d --build
 ```
+Ini akan otomatis menjalankan layanan berikut:
 
-2. _Pastikan bucket MinIO tersedia_
+- Apache Kafka (data streaming)
 
+- MinIO (object storage)
+
+- Streamlit (dashboard)
+
+- Kafka Producer dan Processor (real-time pipeline)
+
+2. _Cek & Buat Bucket MinIO_
+
+Buka terminal:
 ```bash
-docker-compose exec minio sh -c '
-  mc alias set local http://localhost:9000 minioadmin minioadmin
-  mc mb --ignore-existing local/fashion-lakehouse
-'
+docker-compose exec minio sh
 ```
+Kemudian di dalam container MinIO:
+```bash
+mc alias set local http://localhost:9000 minioadmin minioadmin
+mc mb --ignore-existing local/fashion-lakehouse
+exit
+```
+  _Bucket fashion-lakehouse akan digunakan untuk menyimpan file Parquet hasil konsumsi Kafka dan model prediksi._
 
-3. _Jalankan producer real-time_
+3. _Jalankan Kafka Producer (Real-Time)_
+
+Jalankan Kafka producer untuk membaca data dari file CSV dan mengirimkan ke Kafka Topic _fashion-products_:
 
 ```bash
 docker-compose exec streamlit \
@@ -90,10 +111,34 @@ docker-compose exec streamlit \
     --interval 1 \
     --bootstrap-servers kafka:9092
 ```
+  _File fashion_sales.csv berisi data penjualan produk fashion, akan dikirimkan baris demi baris ke Kafka setiap 1 detik._
 
-4. _Dashboard_ akan tersedia di:
+4. _Cek File di MinIO_
 
+- Akses MinIO dashboard di: http://localhost:9000
+
+- Login:
+
+  - Username: minioadmin
+
+  - Password: minioadmin
+
+- Masuk ke bucket fashion-lakehouse dan pastikan file .parquet muncul setelah beberapa detik
+
+5. _Akses Dashboard Streamlit_
+
+Buka browser:
 [http://localhost:8501](http://localhost:8501)
+
+Dashboard akan menampilkan:
+
+- Gallery Produk
+
+- Top Sold Products
+
+- Donut Chart Kategori
+
+- Prediksi Penjualan Produk
 
 ## Folder Struktur
 
