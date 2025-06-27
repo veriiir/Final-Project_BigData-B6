@@ -139,19 +139,19 @@ Contoh prediksi:
 
 Deskripsi:
 
-Ini adalah tampilan utama dashboard setelah data berhasil dimuat dari MinIO.
+- Ini adalah tampilan utama dashboard setelah data berhasil dimuat dari MinIO.
 
-Di bagian atas terdapat KPI seperti:
+- Di bagian atas terdapat KPI seperti:
 
-Total SKUs: jumlah total produk fashion yang tersedia.
+  - Total SKUs: jumlah total produk fashion yang tersedia.
 
-Categories: jumlah kategori produk unik.
+  - Categories: jumlah kategori produk unik.
 
-Avg. Rating: rata-rata penilaian dari semua produk.
+  - Avg. Rating: rata-rata penilaian dari semua produk.
 
-Terdapat tombol Download filtered CSV untuk mengunduh data yang telah difilter.
+- Terdapat tombol Download filtered CSV untuk mengunduh data yang telah difilter.
 
-Navigasi tab tersedia untuk menjelajahi fitur seperti Gallery, Top Sold, Insights, Category Sales, dan Prediction.
+- Navigasi tab tersedia untuk menjelajahi fitur seperti Gallery, Top Sold, Insights, Category Sales, dan Prediction.
 
 ### - _Gallery Product_
 
@@ -159,13 +159,13 @@ Navigasi tab tersedia untuk menjelajahi fitur seperti Gallery, Top Sold, Insight
 
 Deskripsi:
 
-Menampilkan gambar-gambar produk dari dataset berdasarkan filter yang dipilih.
+- Menampilkan gambar-gambar produk dari dataset berdasarkan filter yang dipilih.
 
-Setiap produk ditampilkan dengan gambar dan judul produk.
+- Setiap produk ditampilkan dengan gambar dan judul produk.
 
-Disusun secara grid otomatis menggunakan Streamlit columns() dan CSS hover untuk efek pembesaran.
+- Disusun secara grid otomatis menggunakan Streamlit columns() dan CSS hover untuk efek pembesaran.
 
-Berguna untuk melihat visual produk fashion berdasarkan gender, warna, kategori, dan lainnya.
+- Berguna untuk melihat visual produk fashion berdasarkan gender, warna, kategori, dan lainnya.
 
 ### - _Top Sold Products_
 
@@ -173,11 +173,11 @@ Berguna untuk melihat visual produk fashion berdasarkan gender, warna, kategori,
 
 Deskripsi:
 
-Menampilkan 10 produk dengan penjualan tertinggi berdasarkan nilai sold_count.
+- Menampilkan 10 produk dengan penjualan tertinggi berdasarkan nilai sold_count.
 
-Disajikan dalam bentuk bar chart dan dataframe untuk mempermudah perbandingan.
+- Disajikan dalam bentuk bar chart dan dataframe untuk mempermudah perbandingan.
 
-Chart menunjukkan visual penjualan, sedangkan tabel memberikan rincian nama produk, jumlah terjual, dan rating.
+- Chart menunjukkan visual penjualan, sedangkan tabel memberikan rincian nama produk, jumlah terjual, dan rating.
 
 ### - _Prediction Feature_
 
@@ -185,19 +185,19 @@ Chart menunjukkan visual penjualan, sedangkan tabel memberikan rincian nama prod
 
 Deskripsi:
 
-Fitur prediksi penjualan produk di masa depan menggunakan model Linear Regression.
+- Fitur prediksi penjualan produk di masa depan menggunakan model Linear Regression.
 
-User memilih produk, memasukkan nilai sold_count saat ini.
+- User memilih produk, memasukkan nilai sold_count saat ini.
 
-Sistem secara otomatis menampilkan rating produk tersebut.
+- Sistem secara otomatis menampilkan rating produk tersebut.
 
-Setelah klik tombol Predict, akan muncul prediksi penjualan berikutnya beserta:
+- Setelah klik tombol Predict, akan muncul prediksi penjualan berikutnya beserta:
 
-Perbedaan nilai prediksi dengan penjualan saat ini.
+  - Perbedaan nilai prediksi dengan penjualan saat ini.
 
-Nilai akurasi model (R²) dan Mean Absolute Error (MAE).
+  - Nilai akurasi model (R²) dan Mean Absolute Error (MAE).
 
-Berguna untuk mengestimasi performa produk ke depannya.
+- Berguna untuk mengestimasi performa produk ke depannya.
 
 ### - _MinIO Dashboard_
 
