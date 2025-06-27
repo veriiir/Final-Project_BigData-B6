@@ -49,7 +49,7 @@ Sistem ini mengikuti arsitektur real-time lakehouse yang terdiri dari:
 
 ![image](https://github.com/user-attachments/assets/096cc3c9-18d8-4549-bad9-137a17db87f4)
 
-## Langkah Menjalankan Proyek
+## Langkah Menjalankan Proyek dalam 1 Command
 
 ### Quick start
 
@@ -139,6 +139,18 @@ Dashboard akan menampilkan:
 - Donut Chart Kategori
 
 - Prediksi Penjualan Produk
+
+## Langkah Menghentikan Proyek
+
+1. Untuk menghentikan semua layanan, buka terminal baru di direktori proyek dan jalankan:
+```bash
+docker-compose down
+```
+
+2. Untuk menghapus juga data yang ada di MinIO, gunakan:
+```bash
+docker-compose down -v
+```
 
 ## Folder Struktur
 
