@@ -1,4 +1,4 @@
-# Final-Project_BigData-B6
+# Final Project: Big Data dan Data Lakehouse - Kelompok B6
 
 ## Anggota Kelompok
 
@@ -8,6 +8,22 @@
 | 5027221048 | Malvin Putra Rismahardian |
 | 5027221084 | Farand Febriansyah        |
 | 5027221088 | Veri Rahman               |
+
+# Analisis Penjualan Fashion: Prediksi Penjualan Produk
+
+## Deskripsi Masalah
+
+Penjualan produk fashion sangat dipengaruhi oleh banyak faktor seperti rating pelanggan, popularitas, harga, dan kategori produk. Proyek ini bertujuan membangun sistem data lakehouse real-time untuk menampilkan visualisasi data produk sekaligus melakukan prediksi jumlah penjualan berikutnya menggunakan model machine learning berbasis regresi.
+
+## Tujuan Proyek
+
+- Membangun pipeline real-time dengan Kafka dan MinIO untuk menyimpan data produk fashion
+
+- Membuat proses ETL dari Kafka Producer ke MinIO
+
+- Melatih model regresi untuk memprediksi jumlah penjualan
+
+- Menyediakan dashboard interaktif menggunakan Streamlit
 
 ## Overview
 
