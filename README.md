@@ -127,8 +127,9 @@ docker-compose exec streamlit \
 
 Contoh prediksi:
 
-- Input: Sneakers A, sold_count: 320
-- Output: predicted sold_count: 500
+- Input: Ant Kids Boys Rock Grey Tshirts sold_count: 301, rating: 4.50
+- Output: predicted sold_count: 435
+![arsitektur](Image/contoh-predict.png)
 
 ## Output Screenshots
 - _Dashboard UI_
