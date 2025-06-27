@@ -119,17 +119,67 @@ Contoh prediksi:
 
   ![arsitektur](Image/dashboard.png)
 
+Deskripsi:
+
+Ini adalah tampilan utama dashboard setelah data berhasil dimuat dari MinIO.
+
+Di bagian atas terdapat KPI seperti:
+
+Total SKUs: jumlah total produk fashion yang tersedia.
+
+Categories: jumlah kategori produk unik.
+
+Avg. Rating: rata-rata penilaian dari semua produk.
+
+Terdapat tombol Download filtered CSV untuk mengunduh data yang telah difilter.
+
+Navigasi tab tersedia untuk menjelajahi fitur seperti Gallery, Top Sold, Insights, Category Sales, dan Prediction.
+
 - _Gallery Product_
 
 ![arsitektur](Image/d-gallery.png)
+
+Deskripsi:
+
+Menampilkan gambar-gambar produk dari dataset berdasarkan filter yang dipilih.
+
+Setiap produk ditampilkan dengan gambar dan judul produk.
+
+Disusun secara grid otomatis menggunakan Streamlit columns() dan CSS hover untuk efek pembesaran.
+
+Berguna untuk melihat visual produk fashion berdasarkan gender, warna, kategori, dan lainnya.
 
 - _Top Sold Products_
 
   ![arsitektur](Image/d-top-sales.png)
 
+Deskripsi:
+
+Menampilkan 10 produk dengan penjualan tertinggi berdasarkan nilai sold_count.
+
+Disajikan dalam bentuk bar chart dan dataframe untuk mempermudah perbandingan.
+
+Chart menunjukkan visual penjualan, sedangkan tabel memberikan rincian nama produk, jumlah terjual, dan rating.
+
 - _Prediction Feature_
 
   ![arsitektur](Image/d-prediction.png)
+
+Deskripsi:
+
+Fitur prediksi penjualan produk di masa depan menggunakan model Linear Regression.
+
+User memilih produk, memasukkan nilai sold_count saat ini.
+
+Sistem secara otomatis menampilkan rating produk tersebut.
+
+Setelah klik tombol Predict, akan muncul prediksi penjualan berikutnya beserta:
+
+Perbedaan nilai prediksi dengan penjualan saat ini.
+
+Nilai akurasi model (R²) dan Mean Absolute Error (MAE).
+
+Berguna untuk mengestimasi performa produk ke depannya.
 
 - _MinIO Dashboard_
 
