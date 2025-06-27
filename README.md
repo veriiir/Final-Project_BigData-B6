@@ -115,18 +115,25 @@ Contoh prediksi:
 - Output: predicted sold_count: 500
 
 ## Output Screenshots
+- _Dashboard UI_
+
+  ![arsitektur](Image/dashboard.png)
+
+- _Gallery Product_
+
+![arsitektur](Image/d-gallery.png)
 
 - _Top Sold Products_
 
-  DOKUM
+  ![arsitektur](Image/d-top-sales.png)
 
 - _Prediction Feature_
 
-  DOKUM
+  ![arsitektur](Image/d-prediction.png)
 
 - _MinIO Dashboard_
 
-  DOKUM
+ ![arsitektur](Image/minio.png)
 
 ## Catatan
 
