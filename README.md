@@ -95,7 +95,7 @@ docker-compose exec streamlit \
 │   └── python_processor.py
 ├── streamlit_app/
 │   ├── app.py
-│   └── requirements.txt
+│   └── predictor.py
 ├── img/
 │   └── Group_739.png
 ```
