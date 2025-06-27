@@ -1,7 +1,5 @@
-
-
-
 # Final-Project_BigData-B6
+
 ## Anggota Kelompok
 
 | NRP        | Nama Lengkap              |
@@ -13,7 +11,7 @@
 
 ## Overview
 
-Proyek ini membangun sistem *Data Lakehouse Real-Time* untuk data penjualan produk fashion menggunakan pipeline yang terdiri dari Kafka, Python, MinIO, dan Streamlit.
+Proyek ini membangun sistem _Data Lakehouse Real-Time_ untuk data penjualan produk fashion menggunakan pipeline yang terdiri dari Kafka, Python, MinIO, dan Streamlit.
 
 Sistem ini menyediakan:
 
@@ -41,24 +39,24 @@ Sistem ini mengikuti arsitektur real-time lakehouse yang terdiri dari:
 
 ```bash
 bash start.sh
-````
+```
 
 Script ini akan:
 
-* Build dan start container
-* Membuat bucket MinIO jika belum ada
-* Menjalankan producer dan processor
-* Membuka dashboard di [http://localhost:8501](http://localhost:8501)
+- Build dan start container
+- Membuat bucket MinIO jika belum ada
+- Menjalankan producer dan processor
+- Membuka dashboard di [http://localhost:8501](http://localhost:8501)
 
 ### Manual Steps
 
-1. *Start Docker Compose*
+1. _Start Docker Compose_
 
 ```bash
 docker-compose up -d --build
 ```
 
-2. *Pastikan bucket MinIO tersedia*
+2. _Pastikan bucket MinIO tersedia_
 
 ```bash
 docker-compose exec minio sh -c '
@@ -67,7 +65,7 @@ docker-compose exec minio sh -c '
 '
 ```
 
-3. *Jalankan producer real-time*
+3. _Jalankan producer real-time_
 
 ```bash
 docker-compose exec streamlit \
@@ -77,7 +75,7 @@ docker-compose exec streamlit \
     --bootstrap-servers kafka:9092
 ```
 
-4. *Dashboard* akan tersedia di:
+4. _Dashboard_ akan tersedia di:
 
 [http://localhost:8501](http://localhost:8501)
 
@@ -104,36 +102,34 @@ docker-compose exec streamlit \
 
 ## Dashboard Fitur
 
-| Tab        | Deskripsi                                                                           |
-| ---------- | ----------------------------------------------------------------------------------- |
-| Gallery    | Menampilkan produk berdasarkan filter                                               |
-| Top Sold   | Menampilkan 10 produk dengan penjualan tertinggi                                    |
-| Insights   | Donut chart distribusi kategori & heatmap rating                                    |
-| Prediction | Memasukkan nama produk dan sold\_count saat ini untuk prediksi sold\_count ke depan |
+| Tab        | Deskripsi                                                                         |
+| ---------- | --------------------------------------------------------------------------------- |
+| Gallery    | Menampilkan produk berdasarkan filter                                             |
+| Top Sold   | Menampilkan 10 produk dengan penjualan tertinggi                                  |
+| Insights   | Donut chart distribusi kategori & heatmap rating                                  |
+| Prediction | Memasukkan nama produk dan sold_count saat ini untuk prediksi sold_count ke depan |
 
 Contoh prediksi:
 
-* Input: Sneakers A, sold\_count: 320
-* Output: predicted sold\_count: 500
+- Input: Sneakers A, sold_count: 320
+- Output: predicted sold_count: 500
 
 ## Output Screenshots
 
-* *Top Sold Products*
+- _Top Sold Products_
 
   DOKUM
 
-* *Prediction Feature*
+- _Prediction Feature_
 
   DOKUM
 
-* *MinIO Dashboard*
+- _MinIO Dashboard_
 
   DOKUM
 
 ## Catatan
 
-* Dashboard menggunakan model LinearRegression untuk prediksi.
-* Data disimpan sebagai file .parquet di MinIO.
-* Jika ingin mengubah model, edit kode pada tab "Prediction" di streamlit\_app/app.py.
-
-
+- Dashboard menggunakan model LinearRegression untuk prediksi.
+- Data disimpan sebagai file .parquet di MinIO.
+- Jika ingin mengubah model, edit kode pada tab "Prediction" di streamlit_app/app.py.

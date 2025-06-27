@@ -1,8 +1,7 @@
 import itertools, os, io, altair as alt, pandas as pd, s3fs, streamlit as st
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import r2_score, mean_absolute_error
 import numpy as np
+from predictor import train_model, predict_sales
+
 
 # ── MinIO config ──
 MINIO_ENDPOINT = os.getenv("MINIO_ENDPOINT", "http://minio:9000")
@@ -171,42 +170,28 @@ with tab_pred:
 
     products = df["ProductTitle"].dropna().unique()
     prod_name = st.selectbox("Choose product", sorted(products))
+    prod_row  = df[df["ProductTitle"] == prod_name].iloc[0]
 
-    prod_row = df[df["ProductTitle"] == prod_name].iloc[0]
     prod_rating = float(prod_row["rating"])
     st.write(f"Current rating: **{prod_rating:.2f}**")
+    st.write(f"Current sold_count: **{int(prod_row['sold_count'])}**")
 
-    sold_now = st.number_input(
-        "Current sold_count (historical sales)",
-        min_value=0, step=1, value=int(prod_row["sold_count"])
-    )
-
-    X = df[["rating", "sold_count"]]
-    y = df["sold_count"]
-    X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.2, random_state=42
-    )
-    reg = LinearRegression().fit(X_train, y_train)
+    # -- latih / ambil model (cached di memori Streamlit) --
+    @st.cache_resource
+    def _get_model():
+        return train_model(df)
+    model_info = _get_model()
 
     if st.button("Predict"):
-        pred = reg.predict(np.array([[prod_rating, sold_now]]))[0]
-        uplift = pred - sold_now
+        pred_val = predict_sales(model_info.model, prod_rating)
+        uplift   = pred_val - prod_row["sold_count"]
         st.success(
-            f"Estimated future sold_count ≈ **{pred:,.0f}** "
+            f"Estimated future sold_count ≈ **{pred_val:,.0f}** "
             f"({'+' if uplift>=0 else ''}{uplift:,.0f} vs current)"
         )
 
-    r2 = r2_score(y_test, reg.predict(X_test))
-    mae = mean_absolute_error(y_test, reg.predict(X_test))
-    m1, m2 = st.columns(2)
-    m1.metric("R²", f"{r2:.2f}")
-    m2.metric("MAE", f"{mae:,.1f}")
-
-    scat = (
-        alt.Chart(df)
-        .mark_circle(size=40, opacity=0.3)
-        .encode(x="rating:Q", y="sold_count:Q")
-    )
-    st.altair_chart(scat, use_container_width=True)
+    c1, c2 = st.columns(2)
+    c1.metric("R²",  f"{model_info.r2:.2f}")
+    c2.metric("MAE", f"{model_info.mae:,.1f}")
 
 st.caption("Built with Streamlit")
